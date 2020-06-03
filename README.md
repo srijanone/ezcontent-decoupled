@@ -58,38 +58,49 @@ npm run dev
 ## Components/widgets supported
 
 1. Hero Banner
+
 ![Alt Hero Banner](https://ezcontent.srijan.net/sites/default/files/styles/card_list/public/2020-06/Screen%20Shot%202020-06-01%20at%202.25.46%20PM.png?itok=xrXGDm6v)
 
-1. Gallery
+2. Gallery
+
 ![Alt Gallery](https://ezcontent.srijan.net/sites/default/files/styles/card_list/public/2020-05/screen_shot_2020-05-29_at_5.33.37_pm.png?itok=TX8EBpdg)
 
-1. Card
+3. Card
+
 ![Alt Card](https://ezcontent.srijan.net/sites/default/files/styles/card_list/public/2020-05/Screen%20Shot%202020-05-29%20at%2012.48.05%20PM.png?h=be23c234&itok=53-IXNPc)
 
-1. Embed
+4. Embed
+
 ![Alt Embed](https://ezcontent.srijan.net/sites/default/files/styles/card_list/public/2020-05/screen_shot_2020-05-29_at_7.06.48_pm.png?itok=faFKKuTu)
 
-1. Map
+5. Map
+
 ![Alt Map](https://ezcontent.srijan.net/sites/default/files/styles/card_list/public/2020-05/screen_shot_2020-05-29_at_4.17.10_pm.png?itok=1cwDrA54)
 
-1. Social Media
+6. Social Media
+
 ![Alt Social Media](https://ezcontent.srijan.net/sites/default/files/styles/card_list/public/2020-05/screen_shot_2020-05-29_at_7.14.58_pm.png?itok=NjUS6POV)
 
 
-1. Rich Text
+7. Rich Text
+
 ![Alt Rich Text](https://ezcontent.srijan.net/sites/default/files/styles/card_list/public/2020-05/screen_shot_2020-05-29_at_11.56.09_pm.png?itok=FVNurtyM)
 
-1. Image
+8. Image
+
 ![Alt Image](https://ezcontent.srijan.net/sites/default/files/styles/card_list/public/2020-06/Screen%20Shot%202020-06-01%20at%201.08.31%20PM.png?h=6dfffef2&itok=6WAJQ0vw)
 
 
-1. Quote
+9. Quote
+
 ![Alt Quote](https://ezcontent.srijan.net/sites/default/files/styles/card_list/public/2020-06/Screen%20Shot%202020-06-01%20at%201.12.08%20PM.png?itok=g-VAbli1)
 
-1. Accordion/FaQ
+10. Accordion/FaQ
+
 ![Alt Accordion and FaQ](https://ezcontent.srijan.net/sites/default/files/styles/card_list/public/2020-06/Screen%20Shot%202020-06-01%20at%201.17.28%20PM.png?itok=cM4tbYxd)
 
-1. Card Grid
+11. Card Grid
+
 ![Alt Card Grid View](https://ezcontent.srijan.net/sites/default/files/styles/card_list/public/2020-06/screen_shot_2020-06-02_at_3.51.54_pm.png?itok=m6ChMQJa)
 
 
