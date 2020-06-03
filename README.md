@@ -36,9 +36,18 @@ npm install
 ```bash
 cp .env.example .env
 ```
-(check .env.example or .env file to know more about variables)
 
 4. Add environment variables in `.env` file
+```bash
+DRUPAL_HOST= # EZContent's base URL 
+
+# Below variables are also required    
+# To get the JSON data for 'Layout Builder' and menu's      
+AUTH_USERNAME= # Drupal user (make sure this user has permission to get menu's, manage layout)   
+AUTH_PASSWORD= # Drupal user password   
+CLIENT_ID= # Drupal Simple Oauth client id   
+CLIENT_SECRET= # Drupal Simple Oauth client secret
+```
 5. Make this codebase up and running
 ```bash
 npm run dev
