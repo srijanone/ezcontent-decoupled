@@ -1,0 +1,12 @@
+.final-block > iframe {
+  max-width: 100%;
+}
+
+.hbspt-form iframe {
+  width: 100% !important;
+}
+
+.block--type-embed-block{
+  max-width: 520px;
+  margin: 0 auto;
+}
