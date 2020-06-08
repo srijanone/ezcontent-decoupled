@@ -20,7 +20,7 @@ Be one step ahead with AI and ML-based auto-tagging, content generation, and per
 
 ## Getting Started/Setup
 
-<strong><a href="https://www.drupal.org/project/ezcontent">EZContent</a></strong> should be installed/setup to make this decoupled code working. 
+<strong><a href="https://www.drupal.org/project/ezcontent">EZContent</a></strong> and <strong><a href="https://www.drupal.org/project/ezcontent_api">EZContent API</a></strong>should be installed/setup to make this decoupled code working. 
 
 If you have <strong>EZContent</strong> already up and running, then follow these steps.
 
