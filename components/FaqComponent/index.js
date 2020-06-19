@@ -1,6 +1,7 @@
 import React from "react";
 import get from "lodash/get";
 import BlockTitle from "../BlockTitle";
+import handleImageInProcessedText from "../../common/helper";
 // import "./style.css";
 
 export default class Faq extends React.Component {
@@ -16,7 +17,7 @@ export default class Faq extends React.Component {
     faqData = data.map(x => {
       const singleFaq = {
         question: x.field_question,
-        answer: x.field_answer.processed
+        answer: handleImageInProcessedText(x.field_answer.processed, this.props.baseUrl)
       };
       return singleFaq;
     });

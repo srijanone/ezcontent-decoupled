@@ -1,6 +1,7 @@
 import React from "react";
 import get from "lodash/get";
 import BlockTitle from "../BlockTitle";
+import handleImageInProcessedText from "../../common/helper";
 // import "./style.css";
 
 export default props => {
@@ -10,7 +11,7 @@ export default props => {
     const article = {
       title: x.article.title,
       path: x.article.path.alias,
-      summary: x.article.field_summary,
+      summary: handleImageInProcessedText(x.article.field_summary, props.baseUrl),
       image: (get(x, "file.uri.url")) ? props.baseUrl + (get(x, "file.uri.url").replace("/sites/default/files/","/sites/default/files/styles/card_list/public/")) : null
     };
     return article;

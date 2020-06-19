@@ -1,5 +1,6 @@
 import React from "react";
 import BlockTitle from "../BlockTitle";
+import handleImageInProcessedText from "../../common/helper";
 export default props => {
   const {
     field_map: location,
@@ -21,11 +22,11 @@ export default props => {
             Map
           </iframe>
         </>
-        {body && <div dangerouslySetInnerHTML={{ __html: body.processed }} />}
+        {body && <div dangerouslySetInnerHTML={{ __html: handleImageInProcessedText(body.processed,props.baseUrl) }} />}
         {link && (
           <div className="w-100 text-right">
-            <a className="nounderline btn btn-primary rounded-0 white-color" href={link.url}>
-              {(link.title) ? link.title : link.url}
+            <a className="nounderline btn btn-primary rounded-0 white-color" href={link.uri}>
+              {(link.title) ? link.title : link.uri}
             </a>
           </div>
         )}

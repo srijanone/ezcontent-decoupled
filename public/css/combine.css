@@ -2183,3 +2183,8 @@ img {
 .p-t-b-10{
   padding: 0 0 10px 0;
 }
+
+.hbspt-form iframe{
+  margin: 0 auto !important;
+  width: 520px !important;
+} 
