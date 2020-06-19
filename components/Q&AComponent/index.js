@@ -1,10 +1,11 @@
 import React from "react";
 import get from "lodash/get";
 import BlockTitle from "../BlockTitle";
+import handleImageInProcessedText from "../../common/helper";
 
 export default props => {
   const question = get(props, "data.attributes.field_question");
-  const answer = get(props, "data.attributes.field_answer.processed");
+  const answer = handleImageInProcessedText(get(props, "data.attributes.field_answer.processed"),props.baseUrl);
   return (
     <>
     <BlockTitle blockTitle={props.data} landingPageCheck={props.landingPageCheck}/>

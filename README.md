@@ -39,7 +39,7 @@ cp .env.example .env
 
 4. Add environment variables in `.env` file
 ```bash
-DRUPAL_HOST= # EZContent's base URL 
+API_HOST= # EZContent's base URL 
 
 # Below variables are also required    
 # To get the JSON data for 'Layout Builder' and menu's      

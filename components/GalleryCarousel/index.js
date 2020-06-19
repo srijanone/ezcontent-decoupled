@@ -3,6 +3,7 @@ import {Helmet} from "react-helmet";
 import Slider from "react-slick";
 import get from 'lodash/get';
 import BlockTitle from "../BlockTitle";
+import handleImageInProcessedText from "../../common/helper";
 
 // import './GalleryCarousel.css';
 
@@ -27,7 +28,7 @@ export default class AsNavFor extends Component {
     const { items } = data;
     const imageObj = items ? items : false;
     const title = get(data,"attributes.field_title") ? get(data,"attributes.field_title") : null;
-    const field_body = get(data,"attributes.field_body.processed") ? get(data,"attributes.field_body.processed") : null;
+    const field_body = get(data,"attributes.field_body.processed") ? handleImageInProcessedText(get(data,"attributes.field_body.processed"),baseUrl) : null;
     const field_link = get(data,"attributes.field_link.uri") ? get(data,"attributes.field_link.uri") : null;
     const field_link_title = get(data,"attributes.field_link.title") ? get(data,"attributes.field_link.title") : null;
     return (

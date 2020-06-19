@@ -15,6 +15,7 @@ import get from "lodash/get";
 import CardList from "./CardList";
 import Card from "./CardComponent";
 import QuestionAnswer from "./Q&AComponent";
+import handleImageInProcessedText from "../common/helper";
 
 export default props => {
   let authorData = props.data.included_fields ? props.data.included_fields.filter(({ type }) => type === 'node--author') : false;
@@ -45,6 +46,7 @@ export default props => {
       AuthorTitle = get(val, "attributes.title");
       AuthorTitleUrl = get(val, "attributes.path.alias") ? get(val, "attributes.path.alias") : null;
       summary = get(val, "attributes.body.processed") ? get(val, "attributes.body.processed") : null;
+      summary = handleImageInProcessedText(summary,get(props,'baseUrl'));
       authorMedia = get(val, "relationships.field_thumbnail.data");
       if(authorMedia && authorMedia.type === "media--image"){
         authorMediaId = authorMedia.id;
@@ -116,7 +118,8 @@ export default props => {
             textData = get(comp,"attributes.field_body.processed") ? get(comp,"attributes.field_body.processed") : '';
           }else{
             textData = get(comp,"attributes.body.processed") ? get(comp,"attributes.body.processed") : '';
-          }              
+          }   
+          textData = handleImageInProcessedText(textData, baseUrl);           
           return <Text key={`text_block_${keyVal}`} text={textData} medium="1" data={comp} landingPageCheck={landingPageCheck}/>;
         case "social_media":
           return <SocialMedia key={`social_media_${keyVal}`} type={comp.media.type} attributes={comp.media.attributes} data={comp} landingPageCheck={landingPageCheck}/>;
@@ -134,9 +137,9 @@ export default props => {
           return <Quote key={`quote_${keyVal}`} data={comp} landingPageCheck={landingPageCheck}/>;
         case "map":
         case "map_block":
-          return <Map key={`map_${keyVal}`} data={comp} landingPageCheck={landingPageCheck}/>;
+          return <Map key={`map_${keyVal}`} data={comp} landingPageCheck={landingPageCheck} baseUrl={baseUrl}/>;
         case "faq":
-          return <Faq key={`faq_${keyVal}`} data={comp} landingPageCheck={landingPageCheck}/>;
+          return <Faq key={`faq_${keyVal}`} data={comp} landingPageCheck={landingPageCheck} baseUrl={baseUrl}/>;
         case "cards":
           return <Card key={`card__${keyVal}`} cardListData={comp.attributes} cardListContent={comp.items} view_mode={comp.view_mode} data={comp} baseUrl={baseUrl} landingPageCheck={landingPageCheck}/>;
         case "card_list":
@@ -146,7 +149,7 @@ export default props => {
         case "referenced_card":
           return <Reference key={`reference_${keyVal}`} data={comp} baseUrl={baseUrl} landingPageCheck={landingPageCheck}/>;
         case "faq_qa":
-          return <QuestionAnswer key={`QuestionAnswer_${keyVal}`} data={comp} landingPageCheck={landingPageCheck}/>;
+          return <QuestionAnswer key={`QuestionAnswer_${keyVal}`} data={comp} landingPageCheck={landingPageCheck} baseUrl={baseUrl}/>;
         case "default":
           return null;
       }
@@ -165,7 +168,8 @@ export default props => {
                   return( 
                     <div className={
                       item.layout_id == "full_width_content"
-                        ? "container"
+                        // ? "container"
+                        ? "col-12"
                         : 'col-' + colArr[item.layout_id]
                     }
                     key={`block__${i}${j}`}>
