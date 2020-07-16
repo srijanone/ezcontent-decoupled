@@ -39,7 +39,9 @@ class HeroBanner extends React.Component {
   heroComponent = (heroAsset) => {
     return (
      <>
-        <div className="hero_banner_wrapper paragraph--type--card paragraph--view-mode--hero-media position-relative w-100" style={{ backgroundImage: `url(${heroAsset.image})` }}>
+        {/* <div className="hero_banner_wrapper paragraph--type--card paragraph--view-mode--hero-media position-relative w-100" style={{ backgroundImage: `url(${heroAsset.image})`, backgroundRepeat: `no-repeat` }}> */}
+        <div className="hero_banner_wrapper paragraph--type--card paragraph--view-mode--hero-media position-relative w-100">
+        <img src={heroAsset.image} />
         <div className={this.layoutToggle(heroAsset.textPosition)} style={{ backgroundColor: heroAsset.bgColor }}>
           <div className="hero_banner_title field--name-field-title mr-0 text-black pt-0 pb-0 pr-2 pl-2 w-100">{heroAsset.title}</div>
           <div className="hero_banner_short_title pt-1 pl-2 pb-0" text_color={heroAsset.text_color}>{heroAsset.field_short_title}</div>
@@ -73,7 +75,8 @@ class HeroBanner extends React.Component {
     
     const heroAssetArr = items.map((heroData, index) => ({
       id: get(items[index], 'id') || index,
-      image: get(heroData,'file') ? `${baseUrl}${get(heroData, 'file.uri.url')}` : null,
+      // image: get(heroData,'file') ? `${baseUrl}${get(heroData, 'file.uri.url')}` : null,
+      image: get(heroData,'derivatives.hero_media.url') ? `${baseUrl}${get(heroData, 'derivatives.hero_media.url')}` : null,
       title: get(heroData, 'card.field_title') || '',
       description: cleanDescription(get(heroData, 'card.field_summary.processed')) || '',
       field_subhead: get(heroData, 'card.field_subhead') || '',

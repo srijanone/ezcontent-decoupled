@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment,useEffect } from "react";
 import MetaTag from "./MetaTag";
 import Text from "./TextComponent";
 import SocialMedia from "./SocialMedia"
@@ -36,6 +36,14 @@ export default props => {
     layout_fourcol_section: 3,
     full_width_content: 12
   }
+
+
+  useEffect(()=>{
+    if(props.data.routerResolve.redirect)
+    {
+      window.history.pushState("", "", get(props.data.routerResolve, "redirect[0].to"));
+    }
+  },[])
 
   if (props.data.routerResolve && props.data.routerResolve.entity.bundle == 'landing_page') {
     landingPageCheck = true;
@@ -81,6 +89,7 @@ export default props => {
   let content = get(props,'data.content');
   let baseUrl = get(props,'baseUrl');
   let pageTitle = get(props,'data.node_basic_data.title');
+  const showPageTitle = get(props, "data.node_basic_data.path.alias")!=="/home";
   let subhead = (!landingPageCheck) ? get(props,'data.node_basic_data.field_subhead') : null;
   let shortTitle = (!landingPageCheck) ? get(props,'data.node_basic_data.field_short_title') : null;
   
@@ -118,8 +127,8 @@ export default props => {
             textData = get(comp,"attributes.field_body.processed") ? get(comp,"attributes.field_body.processed") : '';
           }else{
             textData = get(comp,"attributes.body.processed") ? get(comp,"attributes.body.processed") : '';
-          }   
-          textData = handleImageInProcessedText(textData, baseUrl);           
+          }    
+          textData = handleImageInProcessedText(textData, baseUrl);         
           return <Text key={`text_block_${keyVal}`} text={textData} medium="1" data={comp} landingPageCheck={landingPageCheck}/>;
         case "social_media":
           return <SocialMedia key={`social_media_${keyVal}`} type={comp.media.type} attributes={comp.media.attributes} data={comp} landingPageCheck={landingPageCheck}/>;
@@ -205,7 +214,7 @@ export default props => {
       <div id="main-wrapper" className={landingPageCheck ? "ezcontent-main-wrapper landing-page-holder" : "ezcontent-main-wrapper"}>
         <div className={landingPageCheck ? "mt-4 mb-4" : "container mt-4 mb-4"}>
           
-          { landingPageCheck ? null : <h1 className="pb-3">{ pageTitle }</h1> }
+          { landingPageCheck && !showPageTitle ? null : <h1 className="pb-3">{ pageTitle }</h1> }
           { shortTitle ? <div className="mb-2">{shortTitle}</div> : null }
           { subhead ? <div className="mb-2">{subhead}</div> : null }
 

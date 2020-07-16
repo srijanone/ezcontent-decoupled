@@ -22,7 +22,7 @@ export default props => {
             Map
           </iframe>
         </>
-        {body && <div dangerouslySetInnerHTML={{ __html: handleImageInProcessedText(body.processed,props.baseUrl) }} />}
+        {body && <div dangerouslySetInnerHTML={{ __html: handleImageInProcessedText(body.processed, props.baseUrl) }} />}
         {link && (
           <div className="w-100 text-right">
             <a className="nounderline btn btn-primary rounded-0 white-color" href={link.uri}>

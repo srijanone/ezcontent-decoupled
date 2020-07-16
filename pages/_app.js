@@ -11,7 +11,7 @@ function MyApp({ fetchPage, headerFooter, error }) {
 
   return error === false ? (
     <>
-      <Header data={headerFooter.main} />
+      <Header data={headerFooter} />
       <Component data={fetchPage} baseUrl={process.env.API_HOST} />
       <Footer data={headerFooter}/>
     </>

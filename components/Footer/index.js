@@ -2,7 +2,10 @@ import React from "react";
 import get from "lodash/get";
 
 export default props => {
-  const footerItems = get(props, "data.footer-menu");
+  let footerItems = get(props, "data.footer-menu");
+  if(!footerItems) {
+    footerItems = get(props, "data.footer");
+  }
   const privacyPolicyItems = get(props, "data.privacy-policy");
   
   return (
@@ -21,19 +24,21 @@ export default props => {
               </div>
             </div>
             <div className="col-sm-8">
-              <nav className="row">
-                <ul className="menu--footer-menu w-100 d-flex flex-wrap">
-                  {footerItems.map(item => {
-                    return (
-                      <li className="col-sm-4" key={`f-m-${item.drupal_internal__id}`}>
-                        <a href={item.link.url}>
-                          {item.title}
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </nav>
+              {footerItems &&
+                <nav className="row">
+                  <ul className="menu--footer-menu w-100 d-flex flex-wrap">
+                    {footerItems.map(item => {
+                      return (
+                        <li className="col-sm-4" key={`f-m-${item.drupal_internal__id}`}>
+                          <a href={item.link.url}>
+                            {item.title}
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </nav>
+              }
             </div>
           </div>
         </div>
@@ -42,18 +47,20 @@ export default props => {
         <div className="container">
           <div className="row edge-footer">
             <div className="menu--privacy-policy">
-              <ul className="menu">
-                {privacyPolicyItems.map(element => (
-                  <li key={`pp${element.drupal_internal__id}`}>
-                    <a href={element.link.url}>
-                      {element.title}
-                    </a>
+              {privacyPolicyItems &&
+                <ul className="menu">
+                  {privacyPolicyItems.map(element => (
+                    <li key={`pp${element.drupal_internal__id}`}>
+                      <a href={element.link.url}>
+                        {element.title}
+                      </a>
+                    </li>
+                  ))}
+                  <li className="last">
+                    <span>&copy; {new Date().getFullYear()} Copyright</span>
                   </li>
-                ))}
-                <li className="last">
-                  <span>&copy; {new Date().getFullYear()} Copyright</span>
-                </li>
-              </ul>
+                </ul>
+              }
             </div>
           </div>
         </div>
@@ -61,4 +68,5 @@ export default props => {
     </footer>
     </>
   );
+  
 };
