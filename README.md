@@ -55,6 +55,25 @@ npm run dev
 6. Browse your decoupled EZContent site at [http://localhost:3000]
 
 
+## Module Dependencies
+
+Make sure following modules are enabled and configured
+
+1. JSONAPI
+1. EZContent API for preview (https://www.drupal.org/project/ezcontent_api)
+1. Simple Oauth (https://www.drupal.org/project/simple_oauth)
+1. Decoupled Router (https://www.drupal.org/project/decoupled_router)
+
+
+## Menus
+
+1. Add menu items under `main` for header section
+2. Add menu items under `footer` (existing) menu, these will be displayed in footer section (you can also name `footer-menu` if don't have footer menu)
+3. Create `privacy-policy` menu for bottom of the screen
+
+[If you don't see menu items as linked, please edit `/admin/config/services/jsonapi/add/resource_types/menu_link_content/menu_link_content` jsonapi resource and change `link` value to `URL for link` (clear cache)]
+
+
 ## Decoupled Features
 
 1. Menu (Main, footer, privacy)
@@ -63,6 +82,7 @@ npm run dev
 1. Meta tags for SEO
 1. Dynamic path aliases (managed in Drupal)
 1. Content <strong>Preview</strong>
+
 
 ## Components/widgets supported
 

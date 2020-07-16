@@ -17,7 +17,7 @@ export default class Faq extends React.Component {
     faqData = data.map(x => {
       const singleFaq = {
         question: x.field_question,
-        answer: handleImageInProcessedText(x.field_answer.processed, this.props.baseUrl)
+        answer: handleImageInProcessedText(x.field_answer.processed,this.props.baseUrl)
       };
       return singleFaq;
     });

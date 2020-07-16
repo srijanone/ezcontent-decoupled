@@ -42,18 +42,18 @@ export default (props) => {
         {title && <div className="gc--field--name-field-title">{title}</div>}
         <div className="row mt-2 text-center text-lg-left field--name-field-media-items">
           {data.items &&
-            data.items.map(({ file },i) => (
+            data.items.map(({ file, derivatives },i) => (
               <div
                 className="col-lg-3 col-md-4 col-sm-6 col-12 field--item"
                 key={`pg__${i}_${file.drupal_internal__fid}`}
               >
                 <a
-                  href={`${baseUrl}${get(file, "uri.url")}`}
+                  href={`${baseUrl}${get(derivatives, "gallery.url")}`}
                   className="field--name-field-media-image h-100 gallery-item d-flex"
                 >
                   <img style={style}
                     className="gallery-thumbnail mw-100"
-                    src={`${baseUrl}${get(file, "uri.url")}`}
+                    src={`${baseUrl}${get(derivatives, "gallery.url")}`}
                     alt=""
                   />
                 </a>
