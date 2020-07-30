@@ -6,6 +6,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Component from "../components";
 import ErrorComp from "./_error";
+import { getOauth, getMenus, resolveUrl, PageContent} from 'ezcontent_jsonapi'
+
 
 function MyApp({ fetchPage, headerFooter, error }) {
 
@@ -29,10 +31,16 @@ MyApp.getInitialProps = async (appContext) => {
   payloadObj["pathAlias"] = pathData[0]; // get the path
   payloadObj["query"] = ctx.query; // get query
 
-  const fetchPage = await postRequest(
-    process.env.API_HOST,
-    payloadObj
-  );
+  let fetchPage = null
+  try {
+    fetchPage = await postRequest(
+      process.env.API_HOST,
+      payloadObj
+    );
+  } catch(error) {
+    fetchPage = error;
+    console.log(error)
+  } 
   
   let headerFooter = {};
   let error = false;
@@ -46,7 +54,8 @@ MyApp.getInitialProps = async (appContext) => {
 
 
 async function postRequest(url, payload) {
-  const res = EZContentJsonApi({
+
+  let userParams = {
     baseURL: url,
     request: payload,
     oauth: {
@@ -61,14 +70,48 @@ async function postRequest(url, payload) {
         jsonQuery: 'include=field_author.field_thumbnail.field_media_image,field_tags,field_thumbnail.thumbnail&fields[media--image]=name,metatag,thumbnail&fields[file--file]=uri,filename&fields[node--author]=body,title,status,path,field_thumbnail&fields[taxonomy_term--tags]=name,path'
       }
     ]
-  });
+  }
   
-  return await res.then((json) => {
-    return json
+  
+  let output = {};
+  let pathResolve = null
+  const oauthToken = await getOauth(userParams);
+    
+  // resolve URL
+  let resolve = resolveUrl(userParams, oauthToken);
+  await resolve.then((resolved) => {
+    pathResolve = resolved
+    output['routerResolve'] = resolved
   })
-  .catch(err => {
-    return err;
-  });
+  .catch(error => {
+    throw error
+  })
+
+  // get menu
+  if (pathResolve) {
+
+    let menus = getMenus(userParams, "jsonapi", oauthToken);
+    await menus.then((menusjson) => {
+      output['menus'] = menusjson
+    })
+    .catch(error => {
+      throw error
+    })
+
+    // get content
+    let content = new PageContent(pathResolve, userParams, oauthToken).getPageContent();
+    await content.then((contentjson) => {
+      for (let key in contentjson) {
+        output[key] = contentjson[key]
+      }
+    })
+    .catch(error => {
+      throw error
+    });
+
+  }
+    
+  return output;
   
 }
 
