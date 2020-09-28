@@ -5,7 +5,10 @@ import handleImageInProcessedText from "../../common/helper";
 // import "./style.css";
 
 export default props => {
-  
+  if(get(props, 'data.items') === undefined){
+    return null;
+  }
+
   let data = [];
   data = props.data.items.map(x => {
     const article = {

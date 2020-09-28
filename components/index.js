@@ -16,6 +16,12 @@ import CardList from "./CardList";
 import Card from "./CardComponent";
 import QuestionAnswer from "./Q&AComponent";
 import handleImageInProcessedText from "../common/helper";
+import BreadCrumb from "./BreadCrumb";
+import AlertComponent from "./AlertComponent";
+import AuthoredByComponent from "./AuthoredByComponent";
+import AuthoredOnComponent from "./AuthoredOnComponent";
+import BodyComponent from "./BodyComponent";
+import TitleField from "./TitleField";
 
 export default props => {
   let authorData = props.data.included_fields ? props.data.included_fields.filter(({ type }) => type === 'node--author') : false;
@@ -92,13 +98,15 @@ export default props => {
   const showPageTitle = get(props, "data.node_basic_data.path.alias")!=="/home";
   let subhead = (!landingPageCheck) ? get(props,'data.node_basic_data.field_subhead') : null;
   let shortTitle = (!landingPageCheck) ? get(props,'data.node_basic_data.field_short_title') : null;
+  let breadcrumbData = get(props,'data.breadcrumb');
   
   const Author =  (  
     <>
       <div className={hide}>
         <div className="field__label">Author</div>
           <h2 className="node__title">
-            { AuthorTitle  ? <a href={AuthorTitleUrl}>{AuthorTitle}</a> : '' }
+            {/* { AuthorTitle  ? <a href={AuthorTitleUrl}>{AuthorTitle}</a> : '' } */}
+            { AuthorTitle  ? AuthorTitle : '' }
           </h2>
           <div className="row">
             <div className="col-md-4">
@@ -116,6 +124,16 @@ export default props => {
       </div>
     </>
   )
+
+  function sortByWeight(arr) {
+    const sortArr = arr;
+    sortArr.sort((a, b) => {
+      if (a[0] && Number.isInteger(a[0].region_num)) {
+        return a[0].region_num - b[0].region_num
+      }
+    })
+    return sortArr;
+  }
 
   function switchBlock(comp,keyVal,layoutId,landingPageCheck){
     if(comp){
@@ -159,6 +177,16 @@ export default props => {
           return <Reference key={`reference_${keyVal}`} data={comp} baseUrl={baseUrl} landingPageCheck={landingPageCheck}/>;
         case "faq_qa":
           return <QuestionAnswer key={`QuestionAnswer_${keyVal}`} data={comp} landingPageCheck={landingPageCheck} baseUrl={baseUrl}/>;
+        case "alert_banner":
+          return <AlertComponent key={`alert_${keyVal}`} data={comp} landingPageCheck={landingPageCheck}/>;
+        case "title":
+          return <TitleField key={`title_${keyVal}`} data={comp} landingPageCheck={landingPageCheck}/>;
+        case "body":
+          return <BodyComponent key={`body_${keyVal}`} data={comp} landingPageCheck={landingPageCheck}/>;
+        case "created":
+          return <AuthoredOnComponent key={`authoredon_${keyVal}`} data={comp} landingPageCheck={landingPageCheck}/>;
+        case "uid":
+          return <AuthoredByComponent key={`authoredby_${keyVal}`} data={comp} landingPageCheck={landingPageCheck}/>;
         case "default":
           return null;
       }
@@ -171,7 +199,7 @@ export default props => {
         content.map((item,i) => (
           <div className={item.rowCssClass ? (landingPageCheck) ? `row ${item.rowCssClass}` : item.rowCssClass : ''} key={`block_${i}`}>
             { 
-              item.components.map((compVal,j)=>{
+              sortByWeight(item.components).map((compVal,j)=>{
                 let layoutId = item.layout_id;
                 if(landingPageCheck){
                   return( 
@@ -213,16 +241,14 @@ export default props => {
       <MetaTag meta={get(props,"data.node_basic_data")} />
       <div id="main-wrapper" className={landingPageCheck ? "ezcontent-main-wrapper landing-page-holder" : "ezcontent-main-wrapper"}>
         <div className={landingPageCheck ? "mt-4 mb-4" : "container mt-4 mb-4"}>
-          
-          { landingPageCheck && !showPageTitle ? null : <h1 className="pb-3">{ pageTitle }</h1> }
-          { shortTitle ? <div className="mb-2">{shortTitle}</div> : null }
-          { subhead ? <div className="mb-2">{subhead}</div> : null }
-
+          {breadcrumbData ? <BreadCrumb landingPageCheck={landingPageCheck} data={  breadcrumbData}/> : null}
+          {/* { landingPageCheck && !showPageTitle ? null : <h1 className="pb-3">{ pageTitle }</h1> } */}
+          {/* { shortTitle ? <div className="mb-2">{shortTitle}</div> : null }
+          { subhead ? <div className="mb-2">{subhead}</div> : null } */}
           {block}
           {Author}
         </div>
       </div>
     </Fragment>
-    
   )
 }
