@@ -48,7 +48,7 @@ export default (props) => {
                 key={`pg__${i}_${file.drupal_internal__fid}`}
               >
                 <a
-                  href={`${baseUrl}${get(derivatives, "gallery.url")}`}
+                  href={`${baseUrl}${get(derivatives, "gallery_colorbox.url")}`}
                   className="field--name-field-media-image h-100 gallery-item d-flex"
                 >
                   <img style={style}

@@ -88,7 +88,7 @@ class HeroBanner extends React.Component {
       field_short_title: get(heroData, 'card.field_short_title') || '',
       url: [
         {
-          link: get(heroData, 'card.field_link.uri') || '',
+          link: get(heroData, 'card.field_link.url') || '',
           title: get(heroData, 'card.field_link.title') || '',
           video_url: 0,
         },

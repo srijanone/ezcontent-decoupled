@@ -11,7 +11,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "ezcontent_jsonapi": "^2.0.1",
+    "ezcontent_jsonapi": "^2.0.5",
     "hex-to-rgba": "^2.0.1",
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.4.1",
