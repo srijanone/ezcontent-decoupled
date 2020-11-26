@@ -17,6 +17,9 @@ Retain non-negotiable CMS features such as drag & drop page builder and content 
 
 Be one step ahead with AI and ML-based auto-tagging, content generation, and personalized content.
 
+## Prerequisite
+
+If you are running the EzContent drupal application and the nextjs starter kit on your local system, please make sure you create a Virtual Host for your drupal application and pass it in the .env file updating the API_HOST.
 
 ## Getting Started/Setup
 
