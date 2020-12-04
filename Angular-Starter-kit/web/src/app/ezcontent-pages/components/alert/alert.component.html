@@ -1,0 +1,9 @@
+<div>
+    <div *ngIf="btitle">
+        <h2 class="block-title">{{ btitle }}</h2>
+    </div>
+    <section class="block block--type-alert-banner clearfix">
+        <div class="clearfix field field--name-body field--type-text-with-summary" [innerHTML]="body" [ngStyle]="{'background-color': color, 'opacity': opacity}">
+        </div>
+    </section>
+</div>

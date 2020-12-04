@@ -1,0 +1,22 @@
+<link rel="stylesheet" type="text/css" href="http://www.jacklmoore.com/colorbox/example1/colorbox.css" />
+<div class="container gallery-block paragraph--type--gallery">
+  <h4>{{title}}</h4>
+  <div [innerHTML]="bodyText"></div>
+  <div class="row mt-2 text-center text-lg-left field--name-field-media-items">
+    <div
+      *ngFor="let galleryData of images"
+      class="col-lg-3 col-md-4 col-sm-6 col-12 field--item">
+      <div *ngIf="galleryData.derivatives.gallery">
+        <a
+          [href]="imageBase + galleryData.derivatives.gallery_colorbox.url"
+          class="field--name-field-media-image h-100 gallery-item d-flex cboxElement">
+          <img
+            style="height: 245px; object-fit: cover;"
+            class="gallery-thumbnail mw-100"
+            [src]="imageBase + galleryData.derivatives.gallery.url"
+            [alt]=""/>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

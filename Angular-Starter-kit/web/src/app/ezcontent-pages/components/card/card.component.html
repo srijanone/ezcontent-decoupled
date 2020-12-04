@@ -1,0 +1,64 @@
+<div [class]="'paragraph--type--card ' + data.layout.drupal_internal__id">
+    <div class="layout layout--twocol-section layout--twocol-section--50-50">
+        
+        <ng-container *ngIf="data.layout.drupal_internal__id == 'card_left_media'">
+            <div class="layout__region--first">
+                <ng-container *ngIf="data.derivatives">
+                    <img [src]="path + data.derivatives.card_list.url" />
+                </ng-container>
+            </div>
+        
+            <div class="layout__region--second">
+                <h3>{{ data.card.field_title }}</h3>
+                <ng-container *ngIf="data.card.field_short_title">
+                    <div class="border-bottom border-white mt-2 field--name-field-short-title">
+                        {{ data.card.field_short_title }}
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="data.card.subhead">
+                    <div class="mt-2 field--name-field-subhead">
+                        {{ data.card.subhead }}
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="data.card.field_summary">
+                    <div [innerHTML]="data.card.field_summary.value" class="mt-2"></div>
+                </ng-container>
+                <ng-container *ngIf="data.card.field_link && data.card.field_link.url && data.card.field_link.title">
+                    <div class="text-right pt-3 border-top border-white">
+                        <a class="btn btn-primary rounded-0" [href]="data.card.field_link.url">{{ data.card.field_link.title }}</a>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="data.layout.drupal_internal__id == 'card_right_media'">
+            <div class="layout__region--first">
+                <h3>{{ data.card.field_title }}</h3>
+                <ng-container *ngIf="data.card.field_short_title">
+                    <div class="border-bottom border-white mt-2 field--name-field-short-title">
+                        {{ data.card.field_short_title }}
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="data.card.subhead">
+                    <div class="mt-2 field--name-field-subhead">
+                        {{ data.card.subhead }}
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="data.card.field_summary">
+                    <div [innerHTML]="data.card.field_summary.value" class="mt-2"></div>
+                </ng-container>
+                <ng-container *ngIf="data.card.field_link && data.card.field_link.url && data.card.field_link.title">
+                    <div class="text-right pt-3 border-top border-white">
+                        <a class="btn btn-primary rounded-0" [href]="data.card.field_link.url">{{ data.card.field_link.title }}</a>
+                    </div>
+                </ng-container>
+            </div>
+        
+            <div class="layout__region--second">
+                <ng-container *ngIf="data.derivatives">
+                    <img [src]="path + data.derivatives.card_list.url" />
+                </ng-container>
+            </div>
+        </ng-container>
+    </div>
+</div>

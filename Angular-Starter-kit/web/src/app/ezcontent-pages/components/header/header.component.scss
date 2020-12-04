@@ -1,0 +1,38 @@
+.submenu,
+.tertiaryMenu {
+  list-style: none;
+}
+
+.navbar-nav .submenu .nav-link,
+.navbar-nav .tertiaryMenu .nav-link {
+  white-space: nowrap;
+}
+
+@media only screen and (min-width: 62em) {
+  .nav-item {
+    position: relative;
+  }
+  .submenu,
+  .tertiaryMenu {
+    padding: 0;
+    visibility: hidden;
+    position: absolute;
+    top: auto;
+  }
+
+  .navbar-nav .submenu .nav-link,
+  .navbar-nav .tertiaryMenu .nav-link {
+    color: white;
+  }
+
+  .nav-item:hover > .submenu,
+  .nav-item:hover > .tertiaryMenu {
+    visibility: visible;
+    background-color: #3367d6;
+  }
+
+  .tertiaryMenu {
+    left: 100%;
+    top: 0;
+  }
+}

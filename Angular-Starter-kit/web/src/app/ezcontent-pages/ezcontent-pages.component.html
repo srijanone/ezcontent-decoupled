@@ -1,0 +1,151 @@
+<div class="page">
+
+    <ng-container *ngIf="pageComponents">
+      <app-header [header]="menusHeader"></app-header>
+  
+      <div class="ezcontent-main-wrapper">
+        <div *ngIf="login===false" class="{{ cssClass }}">
+
+          <ng-container *ngIf="breadcrumbData">
+            <app-breadcrumb [data]="breadcrumbData"></app-breadcrumb>
+          </ng-container>
+
+          <ng-container *ngIf="showPageTitle"><h1 class="pb-3">{{ pageTitle }}</h1></ng-container>
+    
+          <ng-container *ngFor="let columnsComp of pageComponents">
+    
+              <div [class]="columnsComp.rowCssClass">
+                <ng-container *ngFor="let columnsCompList of sortByWeight(columnsComp.components); index as i;">
+                  
+                  <div class="{{'layout__region layout__region--' + columnsClass[i]}}">
+    
+                    <ng-container *ngFor="let component of columnsCompList">
+    
+                        <ng-containr *ngIf="component">
+    
+                          <ng-container [ngSwitch]="component.type">
+          
+                            <ng-container *ngSwitchCase="'text_block'">
+                              <block-title [data]="component"></block-title>
+                              <app-text [data]="component.attributes" [path]="drupalHost"></app-text>
+                            </ng-container>
+              
+                            <ng-container *ngSwitchCase="'gallery'">
+    
+                              <div class="gallery--box">
+                                <block-title [data]="component"></block-title>
+    
+                                <ng-container *ngIf="component.view_mode && component.view_mode.drupal_internal__id == 'paragraph.gallery_carousel'; then gallery_carousel else gallery_normal"></ng-container>
+                
+                                  <ng-template #gallery_carousel>
+                                    <app-gallery-carousel [images]="component.items" [imageBase]="drupalHost"></app-gallery-carousel>
+                                  </ng-template>
+                  
+                                  <ng-template #gallery_normal>
+                                    <app-gallery [images]="component.items" [imageBase]="drupalHost" [bodyText]="component.attributes.field_body" [title]="component.attributes.field_title"></app-gallery>
+                                  </ng-template>
+                              </div>
+                              
+                            </ng-container>
+              
+                            <ng-container *ngSwitchCase="'assets'">
+                              <block-title [data]="component"></block-title>
+                              <app-paragraph-asset [data]="component.items" [imageBase]="drupalHost"></app-paragraph-asset>
+                            </ng-container>
+              
+                            <ng-container *ngSwitchCase="'embed_block'">
+                              <block-title [data]="component"></block-title>
+                              <app-embed [data]="component.attributes"></app-embed>
+                            </ng-container>
+              
+                            <ng-container *ngSwitchCase="'social_media'">
+                              <block-title [data]="component"></block-title>
+                              <app-social [data]="component.media"></app-social>
+                            </ng-container>
+              
+                            <ng-container *ngSwitchCase="'quote'">
+                              <block-title [data]="component"></block-title>
+                              <app-quote [data]="component.attributes"></app-quote>
+                            </ng-container>
+              
+                            <ng-container *ngSwitchCase="'map'">
+                              <block-title [data]="component"></block-title>
+                              <app-map [data]="component.attributes" [path]="drupalHost"></app-map>
+                            </ng-container>
+              
+                            <ng-container *ngSwitchCase="'faq'">
+                              <block-title [data]="component"></block-title>
+                              <app-faq [data]="component.items" [path]="drupalHost"></app-faq>
+                            </ng-container>
+              
+                            <ng-container *ngSwitchCase="'hero_media'">
+                              <block-title [data]="component"></block-title>
+                              <app-hero [data]="component.items" [imageBase]="drupalHost"></app-hero>
+                            </ng-container>
+              
+                            <ng-container *ngSwitchCase="'card_list'">
+                              <block-title [data]="component"></block-title>
+                              <app-cardlist [component]="component" [path]="drupalHost"></app-cardlist>
+                            </ng-container> 
+              
+                            <ng-container *ngSwitchCase="'referenced_card'">
+                              <block-title [data]="component"></block-title>
+                              <app-reference [data]="component.items" [path]="drupalHost"></app-reference>
+                            </ng-container>
+
+                            <ng-container *ngSwitchCase="'alert_banner'">
+                              <app-alert [data]="component" [path]="drupalHost"></app-alert>
+                            </ng-container>
+
+                            <ng-container *ngSwitchCase="'title'">
+                              <app-title [data]="component" [path]="drupalHost"></app-title>
+                            </ng-container>
+
+                            <ng-container *ngSwitchCase="'body'">
+                              <app-body [data]="component" [path]="drupalHost"></app-body>
+                            </ng-container>
+
+                            <ng-container *ngSwitchCase="'uid'">
+                              <app-authoredby [data]="component" [path]="drupalHost"></app-authoredby>
+                            </ng-container>
+
+                            <ng-container *ngSwitchCase="'created'">
+                              <app-authoredon [data]="component" [path]="drupalHost"></app-authoredon>
+                            </ng-container>
+          
+                          </ng-container>
+    
+                        </ng-containr>
+                        
+                    </ng-container>
+                  </div>
+                </ng-container>
+              </div>
+    
+          </ng-container>
+    
+          <div *ngIf="contentAuthor && show_signin === false " class="author--box">
+            <author [author]="contentAuthor"></author>
+          </div>
+
+          <div *ngIf="show_signin">
+            <app-premium></app-premium>
+          </div>
+          
+        </div>
+
+        <!-- login block -->
+        <div *ngIf="login" class="{{ cssClass }}">
+          <app-login></app-login>
+        </div>
+      </div>
+    
+      <app-footer [footerMenu]="menusFooter" [privacyPolicy]="menusEnd"></app-footer>
+
+    </ng-container>
+
+    <ng-container *ngIf="errorObj">
+      <app-error [error]="errorObj"></app-error>
+    </ng-container>
+    
+  </div>  

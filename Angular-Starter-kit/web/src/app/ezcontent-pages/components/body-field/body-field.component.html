@@ -1,0 +1,6 @@
+<section className="block block-field-blocknodelanding-pagebody clearfix" *ngIf="body">
+  <div className="field field--name-body field--type-text-with-summary">
+    <div className="field__label" *ngIf="label">{{ label }}</div>
+    <div className="field__item" [innerHTML]="body"></div>
+  </div>
+</section>

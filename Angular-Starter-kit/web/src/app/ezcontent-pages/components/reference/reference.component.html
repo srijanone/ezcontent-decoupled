@@ -1,0 +1,24 @@
+<div class="text-left paragraph--type--referenced-card">
+  <div class="field--name-field-article">
+    <ng-container *ngFor="let element of referenceData">
+      <div class="field__item field--type-image">
+        <div class="block-field-blocknodearticletitle">
+          <div class="mb-25" *ngIf='element.image'>
+              <img [src]='element.image' />
+          </div>
+          <a [href]="element.path">{{ element.title }}</a>
+        </div>
+        <ng-container *ngIf="element.summary">
+          <div class="referenced-summary" [innerHtml]="element.summary"></div>
+        </ng-container>
+
+        <ng-container *ngIf="element.path">
+          <div class="text-right pt-3 border-top border-white">
+              <a class="btn btn-primary rounded-0" [href]="element.path">{{ element.button_text }}</a>
+          </div>
+      </ng-container>
+
+      </div>
+    </ng-container>
+  </div>
+</div>

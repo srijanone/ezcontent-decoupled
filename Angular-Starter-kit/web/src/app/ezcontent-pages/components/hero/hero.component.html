@@ -1,0 +1,62 @@
+<div *ngIf="heroAssetArr.length === 1; then singleHero; else multiHero"></div>
+
+<ng-template #multiHero>
+  <ngx-slick-carousel class="carousel paragraph--type--hero-media mb-3" #slickModal="slick-carousel"
+    [config]="slideConfig">
+    <div ngxSlickItem *ngFor="let heroAsset of heroAssetArr" class="slide">
+      <div class="hero_banner_wrapper paragraph--type--card paragraph--view-mode--hero-media position-relative w-100">
+        <img [src]=heroAsset.image />
+        <div [ngClass]="heroAsset.textPosition" [ngStyle]="{ 'background-color': heroAsset.bgColor }">
+          <div class="hero_banner_title field--name-field-title mr-0 text-black pt-0 pb-0 pr-2 pl-2 w-100">
+            {{ heroAsset.title }}
+          </div>
+          <div class="hero_banner_short_title pt-1 pl-2 pb-0" text_color="{heroAsset.text_color}">
+            {{ heroAsset.field_short_title }}
+          </div>
+          <div class="hero_banner_subhead field--name-field-subhead pt-1 pl-2 pb-0" text_color="{heroAsset.text_color}">
+            {{ heroAsset.field_subhead }}
+          </div>
+          <div class="hero_banner_text_desc mt-1 mb-1 mr-0 pl-2 text-black">
+            {{ heroAsset.description }}
+          </div>
+          <div *ngIf="heroAsset.url">
+            <div *ngFor="let buttonData of heroAsset.url" class="hero_banner_btn_wrapper float-right">
+              <a class="button__group btn btn-primary rounded-0" [href]="buttonData.link"
+                *ngIf="buttonData.link">{{ buttonData.title }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ngx-slick-carousel>
+</ng-template>
+
+<ng-template #singleHero>
+  <div class="paragraph--type--hero-media mb-3">
+    <div *ngFor="let heroAsset of heroAssetArr">
+      <div class="hero_banner_wrapper paragraph--type--card paragraph--view-mode--hero-media position-relative w-100">
+        <img [src]=heroAsset.image />
+        <div [ngClass]="heroAsset.textPosition" [ngStyle]="{ 'background-color': heroAsset.bgColor }">
+          <div class="hero_banner_title field--name-field-title mr-0 text-black pt-0 pb-0 pr-2 pl-2 w-100">
+            {{ heroAsset.title }}
+          </div>
+          <div class="hero_banner_short_title pt-1 pl-2 pb-0" text_color="{heroAsset.text_color}">
+            {{ heroAsset.field_short_title }}
+          </div>
+          <div class="hero_banner_subhead field--name-field-subhead pt-1 pl-2 pb-0" text_color="{heroAsset.text_color}">
+            {{ heroAsset.field_subhead }}
+          </div>
+          <div class="hero_banner_text_desc mt-1 mb-1 mr-0 pl-2 text-black">
+            {{ heroAsset.description }}
+          </div>
+          <div *ngIf="heroAsset.url">
+            <div *ngFor="let buttonData of heroAsset.url" class="hero_banner_btn_wrapper float-right">
+              <a class="button__group btn btn-primary rounded-0" [href]="buttonData.link"
+                *ngIf="buttonData.link">{{ buttonData.title }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

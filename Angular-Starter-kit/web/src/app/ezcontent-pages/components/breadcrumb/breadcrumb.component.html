@@ -1,0 +1,8 @@
+<div class="breadcrumb" *ngIf="data">
+    <ol class="breadcrumb_list">
+        <li class="breadcrumb_list-item" *ngFor="let item of data">
+            <a [href]="item.url" class="breadcrumb_list-item-link" *ngIf="item.url">{{item.name}}</a>
+            <span class="breadcrumb_list-item-current" *ngIf="!item.url">{{item.name}}</span>
+        </li>
+    </ol>
+</div>

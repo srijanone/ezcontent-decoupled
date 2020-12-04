@@ -1,0 +1,18 @@
+
+<div *ngIf="type === 'media--tweet'; then tweetBlock else instablock"></div>
+
+<ng-template #tweetBlock>
+  <div class="w-100 text-center">
+    <div id="twitter-check" class="d-inline-block mt-0 mb-0 ml-auto mr-auto mw-100">
+      <blockquote class="twitter-tweet mr-auto ml-auto" data-lang="en">
+        <a [href]="url"></a>
+      </blockquote>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #instablock>
+  <div class="instaContainer pb-3 mt-3 mb-3">
+    <iframe [src]="url" frameBorder="0" height="100%"></iframe>
+  </div>
+</ng-template>

@@ -1,0 +1,12 @@
+<div class="author--block" *ngIf="author.name">
+  <div class="container mt-4 mb-4">
+      <div class="field__label">Author</div>
+      <h2 class="node__title">{{ author.name }}</h2>
+      <div class="row">
+        <div class="col-md-4" *ngIf="author.picture">
+          <img [src]='author.picture' />
+        </div>
+        <div *ngIf="author.bio" class="mt-2 col-md-8" [innerHtml]="author.bio"></div>
+      </div>
+  </div>
+</div>

@@ -1,9 +1,0 @@
-.menu--footer-menu {
-  padding-left: 0;
-}
-
-@media (max-width: 768px){
-  .custom-container {
-    padding: 0 15px;
-  }
-}

@@ -1,0 +1,44 @@
+<header class="navbar fixed-top navbar-expand-lg ezcontent-header" aria-label="Site header">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="/assets/ezcontent_global/logo.svg" />
+    </a>
+    <button
+      class="navbar-toggler navbar-light"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <nav class="collapse navbar-collapse" aria-labelledby="block-mainnavigation-menu" id="navbarSupportedContent">
+      <div class="form-inline navbar-form">
+        <ul class="navbar-nav mr-auto" *ngIf="header">
+          <ng-container *ngFor="let headItem of header">
+            <li  class="nav-item" routerLinkActive="active" *ngIf="!headItem.parent">
+              <a class="nav-link" [href]="headItem.link.url">{{headItem.title}}</a>
+              <ul class="submenu" *ngIf="subMenu">
+                <ng-container *ngFor="let subItem of subMenu">
+                  <li class="nav-item" *ngIf="headItem.uuid === getParentId(subItem)">
+                    <a class="nav-link" [href]="subItem.link.url">{{subItem.title}}</a>
+                    <ul class="tertiaryMenu" *ngIf="subMenu">
+                      <ng-container *ngFor="let item of subMenu">
+                        <li class="nav-item" *ngIf="getParentId(item) === subItem.uuid">
+                          <a class="nav-link" [href]="item.link.url">{{item.title}}</a>
+                        </li>
+                      </ng-container>
+                    </ul>
+                  </li>
+                </ng-container>
+              </ul>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>

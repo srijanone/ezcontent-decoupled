@@ -1,0 +1,25 @@
+<div class="accordion mb-3 mt-3" id="{{ 'accordion' + unique}}">
+  <ng-container *ngFor="let item of faqData; index as i">
+    <div class="card">
+      <div class="card-header collapse-cursor" 
+        data-toggle="collapse"
+        attr.data-target="{{'#collapse'+i}}"
+        attr.aria-expanded="true"
+        attr.aria-controls="{{'collapse'+i}}"
+        [id]="i">
+        <h2 class="mb-0">
+          <button class="btn" type="button">
+            {{ item.question }}
+          </button>
+        </h2>
+      </div>
+      <div
+        id="{{'collapse'+i}}"
+        class="collapse"
+        attr.aria-labelledby="{{'heading'+i}}"
+        attr.data-parent="{{ '#accordion' + unique}}">
+        <div class="card-body" [innerHTML]="item.answer"></div>
+      </div>
+    </div>
+  </ng-container>
+</div>

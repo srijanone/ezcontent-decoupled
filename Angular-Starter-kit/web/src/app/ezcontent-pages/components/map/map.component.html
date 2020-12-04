@@ -1,0 +1,21 @@
+<div class="paragraph--type--map mt-3 mb-3">
+  <ng-container *ngIf="title && subTitle">
+    <div class="field--name-field-title">{{ title }}</div>
+    <div class="field--name-field-short-title">{{ subTitle }}</div>
+  </ng-container>
+  <ng-container *ngIf="url">
+    <iframe class="w-100" [src]="url" frameBorder="0" height="410px">
+      Map
+    </iframe>
+  </ng-container>
+  <ng-container *ngIf="body">
+    <div [innerHTML]="body.value"></div>
+  </ng-container>
+  <ng-container *ngIf="link">
+    <div class="w-100 text-right">
+      <a class="nounderline btn btn-primary rounded-0" href="{{link.uri}}">
+        {{ link.title }}
+      </a>
+    </div>
+  </ng-container>
+</div>

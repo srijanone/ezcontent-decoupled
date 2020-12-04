@@ -1,0 +1,10 @@
+<ngx-slick-carousel class="carousel paragraph--type--gallery-carousel" 
+#slickModal="slick-carousel" 
+[config]="setting">
+  <div ngxSlickItem *ngFor="let obj of images" class="slide">
+    <div *ngIf="obj.file.uri">
+      <div class="media--background banner position-relative w-100" [style.background-image]="'url('+ imageBase + obj.file.uri.url + ')'">
+        </div>
+      </div>
+  </div>
+</ngx-slick-carousel>

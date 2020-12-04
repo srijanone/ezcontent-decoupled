@@ -1,0 +1,21 @@
+<ng-container *ngIf="isImage; then image; else video"> </ng-container>
+
+<ng-template #image>
+  <div>
+    <div class="text-center mt-3 mb-3">
+      <img class="mw-100" [src]="imageUrl" />
+    </div>
+  </div>
+</ng-template>
+<ng-template #video>
+  <div>
+    <div *ngIf="videoUrl" class="text-center embed-responsive embed-responsive-16by9">
+      <iframe
+        class="border-0 embed-responsive-item"
+        width="560"
+        height="315"
+        [src]="videoUrl"
+      ></iframe>
+    </div>
+  </div>
+</ng-template>

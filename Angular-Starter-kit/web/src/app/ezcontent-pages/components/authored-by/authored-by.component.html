@@ -1,0 +1,6 @@
+<section className="block block-field-blocknodelanding-pageuid clearfix" *ngIf="author_name">
+  <span className="field field--name-uid field--type-entity-reference">
+    <a href={{link}} *ngIf="link">{{author_name}}</a>
+    <span *ngIf="!link">{{author_name}}</span>
+  </span>
+</section>

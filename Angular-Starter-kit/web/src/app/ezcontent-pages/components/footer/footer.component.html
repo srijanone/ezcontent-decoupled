@@ -1,0 +1,42 @@
+<footer class="page-footer footer region-footer">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-3 block--type-text-block">
+          <div class="footer--about--address">
+            <address>
+              Srijan Technologies<br />
+              7E Vandana Building<br />
+              Tolstoy Rd, Atul Grove Road,<br />
+              Janpath, Connaught Place,<br />
+              New Delhi, Delhi 110001<br />
+            </address>
+          </div>
+        </div>
+
+        <div class="col-sm-8">
+          <ul class="menu--footer-menu w-100 d-flex flex-wrap" aria-labelledby="block-footermenu-menu">
+            <li *ngFor="let footerItem of footerMenu" class="col-sm-4">
+              <a [href]="footerItem.link.url">{{footerItem.title}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row edge-footer">
+        <div class="menu--privacy-policy" aria-labelledby="block-privacypolicy-menu">
+        <ul class="menu">
+          <li *ngFor="let privacyPolicyItem of privacyPolicy">
+            <a [href]="privacyPolicyItem.link.url">{{ privacyPolicyItem.title }}</a>
+          </li>
+          <li class="last">
+            <span>&copy; {{ current_year }} Copyright</span>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+</footer>
