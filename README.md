@@ -19,7 +19,7 @@ Be one step ahead with AI and ML-based auto-tagging, content generation, and per
 
 ## Prerequisite
 
-If you are running the EzContent drupal application and the nextjs starter kit on your local system, please make sure you create a Virtual Host for your drupal application and pass it in the .env file updating the API_HOST.
+If you are running the EzContent drupal application and the Angular starter kit on your local system, please make sure you create a Virtual Host for your drupal application and pass it in the angular .env file updating the DRUPAL_HOST.
 
 ## Getting Started/Setup
 
@@ -27,7 +27,7 @@ If you are running the EzContent drupal application and the nextjs starter kit o
 
 If you have <strong>EZContent</strong> already up and running, then follow these steps.
 
-1. Get this codebase
+1. Get this codebase and switch to angular-starter-kit branch
 ```bash
 git clone git@github.com:srijanone/ezcontent-decoupled.git 
 ```
