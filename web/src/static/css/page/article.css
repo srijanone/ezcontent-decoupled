@@ -1,0 +1,43 @@
+.path-node:not(.page-node-type-landing-page) .page-header {
+  font-size: 36px;
+  line-height: 40px;
+  font-family: "ProximaNovaT-Thin", sans-serif;
+}
+@media only screen and (min-width: 37.5em) {
+  .path-node:not(.page-node-type-landing-page) .page-header {
+    font-size: 42px;
+    line-height: 46px;
+  }
+}
+.path-node:not(.page-node-type-landing-page) .page-header {
+  border: none;
+  margin-bottom: 10px;
+}
+.path-node:not(.page-node-type-landing-page)
+  .full
+  .content
+  > .field--name-field-subhead {
+  font-family: "ProximaNovaT-Thin", sans-serif;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+.path-node:not(.page-node-type-landing-page)
+  .paragraph--type--text
+  .field--name-field-body {
+  max-width: 810px;
+  margin: 0 0 0 auto;
+}
+.path-node:not(.page-node-type-landing-page) .paragraph--type--text img {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.path-node:not(.page-node-type-landing-page) .paragraph--type--text p {
+  margin-bottom: 1em;
+  line-height: 24px;
+}
+.path-node:not(.page-node-type-landing-page) .region-content {
+  padding-bottom: 40px;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2UvcGFnZS9hcnRpY2xlLnNjc3MiLCJwYWdlL2Fic3RyYWN0cy9fbWl4aW5zLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBSUEsMERDOEVFLGVBQ0EsaUJBQ0EsMkNBQTRDLENBcEJ4QywyQ0Q1RE4sMERDa0ZJLGVBQ0EsZ0JBQWlCLENBRXBCLENEckZELDBEQUdJLFlBQ0Esa0JBQW1CLENBSnZCLHVGQVNRLDJDQUNBLGVBQ0Esa0JBQW1CLENBWDNCLDRGQWlCTSxnQkFDQSxpQkFBa0IsQ0FsQnhCLHdFQXFCTSxtQkFDQSxVQUFXLENBdEJqQixzRUF5Qk0sa0JBQ0EsZ0JBQWlCLENBMUJ2Qiw2REE4QkksbUJBQW9CLENBQ3JCIiwiZmlsZSI6InRvLmNzcyJ9 */
+/*# sourceMappingURL=article.css.map */

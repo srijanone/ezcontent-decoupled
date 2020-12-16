@@ -1,0 +1,35 @@
+.content-listing-component .views-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 50px;
+}
+.content-listing-component .views-row:last-child {
+  margin-bottom: 50px;
+}
+.content-listing-component .views-field-field-thumbnail {
+  width: calc(50% - 20px);
+  margin-right: 20px;
+}
+.content-listing-component .views-field-title {
+  width: 50%;
+}
+.content-listing-component .right-content .author-tags a,
+.content-listing-component .right-content .title a {
+  font-size: 20px;
+  color: black;
+}
+.content-listing-component .right-content .author-tags a:hover,
+.content-listing-component .right-content .title a:hover {
+  color: black;
+  text-decoration: none;
+}
+.content-listing-component .right-content .title {
+  font-size: 24px;
+}
+.content-listing-component .right-content .summary {
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJsb2NrL2Jsb2NrL2NvbnRlbnQtbGlzdGluZy1jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxzQ0FFSSxvQkFDQSxvQkFISixhQUFBLGVBQ1ksQ0FBQSxpREFEWixrQkFRRSxDQUFBLHdEQUVvQix1QkFWdEIsaUJBWUUsQ0FBQSw4Q0FJQSxTQUFBLENBQUEsNEdBaEJGLGVBZ0JFLFdBQUEsQ0FBQSx3SEFoQkYsWUFBQSxvQkFnQkUsQ0FBQSxpREFoQkYsY0FnQkUsQ0FBQSxtREFjRyxjQUFBLENBQUEiLCJmaWxlIjoidG8uY3NzIn0= */
+/*# sourceMappingURL=content-listing-component.css.map */

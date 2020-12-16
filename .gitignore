@@ -1,0 +1,9 @@
+# Ignore paths
+node_modules
+.next
+.DS_Store
+.vscode
+.env
+sessions
+*.key
+*.crt

@@ -1,0 +1,23 @@
+.Mycard {
+  background-color: white;
+}
+.Card-Right {
+  margin-left: auto;
+  order: 2;
+}
+
+.layout--threecol-section {
+  display: flex;
+  flex-wrap: wrap;
+  clear: both;
+}
+
+.layout--threecol-section-col {
+  width: 33%;
+  padding: 0 10px;
+  margin-bottom: 30px;
+}
+
+.full-width {
+  width: 100%;
+}

@@ -1,0 +1,17 @@
+.block--type-embed-block {
+  margin: 30px 0;
+}
+.block--type-embed-block .block-title {
+  text-align: center;
+}
+.block--type-embed-block .field--name-field-script {
+  max-width: 520px;
+  margin: 0 auto;
+}
+.block--type-embed-block iframe {
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJsb2NrL2Jsb2NrL2VtYmVkLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBSUEseUJBQ0UsYUFBYyxDQURoQixzQ0FHSSxpQkFBa0IsQ0FIdEIsbURBTUksZ0JBQ0EsYUFBYyxDQVBsQixnQ0FXSSxjQUNBLGNBQWUsQ0FDaEIiLCJmaWxlIjoidG8uY3NzIn0= */
+/*# sourceMappingURL=embed.css.map */

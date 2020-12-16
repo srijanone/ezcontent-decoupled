@@ -1,0 +1,17 @@
+//import
+@import "../abstracts/mixins";
+@import "../abstracts/variables";
+
+.full-width-content-template-black-background {
+  background: $greadient;
+  padding: 20px 0;
+  margin-bottom: 30px;
+  @include respond(phone-min) {
+    margin-bottom: 90px;
+  }
+}
+.full-width-content-template-black-background {
+  *:not(.layout-builder__link--add) {
+    color: $color-white;
+  }
+}

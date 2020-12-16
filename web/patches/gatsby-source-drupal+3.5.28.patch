@@ -1,0 +1,26 @@
+diff --git a/node_modules/gatsby-source-drupal/gatsby-node.js b/node_modules/gatsby-source-drupal/gatsby-node.js
+index faedb9b..c7ec837 100644
+--- a/node_modules/gatsby-source-drupal/gatsby-node.js
++++ b/node_modules/gatsby-source-drupal/gatsby-node.js
+@@ -53,6 +53,7 @@ exports.sourceNodes = async ({
+     basicAuth,
+     filters,
+     headers,
++    tokenPromise,
+     params,
+     concurrentFileRequests,
+     disallowedLinkTypes,
+@@ -214,6 +215,13 @@ exports.sourceNodes = async ({
+   skipFileDownloads = skipFileDownloads || false; // Fetch articles.
+ 
+   reporter.info(`Starting to fetch all data from Drupal`);
++
++  if (tokenPromise) {
++    await tokenPromise.then(function(result){
++      headers['Authorization'] = headers['Authorization'].replace("{token}", result.access_token);
++    });
++  }
++
+   drupalFetchActivity.start();
+   let allData;
+ 

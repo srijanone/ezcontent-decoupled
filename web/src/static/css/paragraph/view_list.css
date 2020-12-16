@@ -1,0 +1,25 @@
+.paragraph--type--view .field--name-field-title {
+  font-size: 20px;
+  line-height: 24px;
+  font-family: "ProximaNovaT-Thin", sans-serif;
+  color: black;
+}
+@media only screen and (min-width: 37.5em) {
+  .paragraph--type--view .field--name-field-title {
+    font-size: 26px;
+    line-height: 30px;
+  }
+}
+.paragraph--type--view {
+  margin: 60px auto;
+}
+.paragraph--type--view .field--name-field-title {
+  margin-top: 20px;
+}
+.paragraph--type--view .field .viewsreference--view-title {
+  font-size: 22px;
+  margin: 5px 0 20px;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhcmFncmFwaC9wYXJhZ3JhcGgvdmlld19saXN0LnNjc3MiLCJwYXJhZ3JhcGgvYWJzdHJhY3RzL19taXhpbnMuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFJQSxnREN1RkUsZUFDQSxpQkFDQSw0Q0FDQSxXQUFZLENBOUJSLDJDRDVETixnREM0RkksZUFDQSxnQkFBaUIsQ0FFcEIsQ0QvRkQsdUJBQ0UsZ0JBQWlCLENBRG5CLGdEQU9NLGVBQWdCLENBUHRCLDBEQVdNLGVBQ0EsaUJBQWtCLENBQ25CIiwiZmlsZSI6InRvLmNzcyJ9 */
+/*# sourceMappingURL=view_list.css.map */

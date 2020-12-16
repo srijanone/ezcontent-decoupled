@@ -1,0 +1,33 @@
+.banner {
+  width: 100%;
+  min-height: 450px;
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 450px;
+  padding-bottom: 37.5%;
+}
+
+.slick-dotted {
+  text-align: left;
+}
+
+.slick-dotted li {
+  list-style: none;
+  height: 11px;
+  width: 11px;
+  display: inline-block;
+  background: #e5e5e5;
+  margin-right: 8px;
+  margin-left: 0;
+  cursor: pointer;
+}
+
+.slick-dotted li.slick-active {
+  background: #3367d6;
+}
+
+.slick-dotted li button:before {
+  display: none;
+}

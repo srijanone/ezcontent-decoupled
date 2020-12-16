@@ -1,0 +1,57 @@
+.layout--twocol-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.layout--twocol-section > .layout__region {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 100%;
+  flex: 0 1 100%;
+}
+@media screen and (min-width: 40em) {
+  .layout--twocol-section.layout--twocol-section--50-50
+    > .layout__region--first,
+  .layout--twocol-section.layout--twocol-section--50-50
+    > .layout__region--second {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 50%;
+    flex: 0 1 50%;
+  }
+  .layout--twocol-section.layout--twocol-section--33-67
+    > .layout__region--first,
+  .layout--twocol-section.layout--twocol-section--67-33
+    > .layout__region--second {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 33%;
+    flex: 0 1 33%;
+  }
+  .layout--twocol-section.layout--twocol-section--33-67
+    > .layout__region--second,
+  .layout--twocol-section.layout--twocol-section--67-33
+    > .layout__region--first {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 67%;
+    flex: 0 1 67%;
+  }
+  .layout--twocol-section.layout--twocol-section--25-75
+    > .layout__region--first,
+  .layout--twocol-section.layout--twocol-section--75-25
+    > .layout__region--second {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 25%;
+    flex: 0 1 25%;
+  }
+  .layout--twocol-section.layout--twocol-section--25-75
+    > .layout__region--second,
+  .layout--twocol-section.layout--twocol-section--75-25
+    > .layout__region--first {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 75%;
+    flex: 0 1 75%;
+  }
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxheW91dC9sYXlvdXQvdHdvY29sX3NlY3Rpb24uc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFLQSx3QkFDRSxvQkFDQSxvQkFDRCxhQUV5QixtQkFDcEIsY0FDTCxDQUFBLHdDQUdDLG1CQUF1QixrQkFBQSxhQUFpQyxDQUFBLG9DQUN4RCwySkFLQSxtQkFBdUIsaUJBQUEsWUFBaUMsQ0FBQSwySkFLakMsbUJBQWlDLGlCQUN0RCxZQUFhLENBQ2QsMkpBSUMsbUJBQ0QsaUJBRXNCLFlBQUEsQ0FBQSwySkFHdEIsbUJBQUEsaUJBQUEsWUFBQSxDQUFBLDJKQUFBLG1CQUFBLGlCQUFBLFlBQUEsQ0FBQSxDQUFBIiwiZmlsZSI6InRvLmNzcyJ9 */
+/*# sourceMappingURL=twocol_section.css.map */

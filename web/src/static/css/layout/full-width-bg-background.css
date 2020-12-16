@@ -1,0 +1,19 @@
+.full-width-content-template-black-background {
+  background: -webkit-radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
+  background: -o-radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
+  background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+@media only screen and (min-width: 37.5em) {
+  .full-width-content-template-black-background {
+    margin-bottom: 90px;
+  }
+}
+.full-width-content-template-black-background
+  *:not(.layout-builder__link--add) {
+  color: #fff;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxheW91dC9sYXlvdXQvZnVsbC13aWR0aC1iZy1iYWNrZ3JvdW5kLnNjc3MiLCJsYXlvdXQvYWJzdHJhY3RzL19taXhpbnMuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFJQSw4Q0FDRSxxRUFDUyxnRUMwRDhCLDZERHZEckMsZUFHSixrQkFBQSxDQUFBLDJDQUNRLDhDQUVMLGtCQUFBLENBQUEsQ0FBQSxnRkFBQSxVQUFBLENBQUEiLCJmaWxlIjoidG8uY3NzIn0= */
+/*# sourceMappingURL=full-width-bg-background.css.map */

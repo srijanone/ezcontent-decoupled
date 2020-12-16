@@ -1,0 +1,53 @@
+.paragraph--type--card-list > .field--name-field-title {
+  font-size: 20px;
+  line-height: 24px;
+  font-family: "ProximaNovaT-Thin", sans-serif;
+  color: black;
+}
+@media only screen and (min-width: 37.5em) {
+  .paragraph--type--card-list > .field--name-field-title {
+    font-size: 26px;
+    line-height: 30px;
+  }
+}
+.paragraph--type--card-list {
+  margin-bottom: 30px;
+  padding: 0;
+}
+.paragraph--type--card-list .paragraph--type--card {
+  margin-bottom: 30px;
+}
+@media only screen and (min-width: 37.5em) {
+  .paragraph--type--card-list .paragraph--type--card {
+    margin-bottom: 60px;
+  }
+}
+.paragraph--type--card-list > .field--name-field-title {
+  padding: 0 15px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-family: "ProximaNovaT-Thin", sans-serif;
+}
+@media only screen and (min-width: 37.5em) {
+  .paragraph--type--card-list > .field--name-field-title {
+    margin-bottom: 30px;
+  }
+}
+.paragraph--type--card-list .field--name-field-card > .field--item {
+  padding: 0 10px;
+}
+.paragraph--type--card-list.paragraph--view-mode--default
+  .field--name-field-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.paragraph--type--card-list.paragraph--view-mode--default
+  .field--name-field-short-title {
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhcmFncmFwaC9wYXJhZ3JhcGgvY2FyZF9saXN0LnNjc3MiLCJwYXJhZ3JhcGgvYWJzdHJhY3RzL19taXhpbnMuc2NzcyIsInBhcmFncmFwaC9hYnN0cmFjdHMvX3ZhcmlhYmxlcy5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUlBLHFEQ3VGRSxlQUNBLGlCQUNBLDRDQUNBLFdBQVksQ0E5QlIsMkNENUROLHFEQzRGSSxlQUNBLGdCQUFpQixDQUVwQixDRC9GRCw0QkFDRSxtQkFDQSxTQUFVLENBRlosbURBSUksa0JBQW1CLENBSXBCLDJDQVJILG1EQU1NLGtCQUFtQixDQUV0QixDQVJILHFEQWNNLGVBQ0EsbUJBQ0Esa0JBQ0EsMENFR3dDLENGQ3pDLDJDQXJCTCxxREFtQlEsa0JBQW1CLENBRXRCLENBckJMLGlFQTRCUSxjQUFlLENBNUJ2QixrRkFvQ1Esb0JBQ0Esb0JBckNSLGFBQUEsbUJBQTJCLGNBdUNwQixDQUFBLHlGQUVBLGNBQUEsQ0FBQSIsImZpbGUiOiJ0by5jc3MifQ== */
+/*# sourceMappingURL=card_list.css.map */
