@@ -128,7 +128,7 @@ export default props => {
   function sortByWeight(arr) {
     const sortArr = arr;
     sortArr.sort((a, b) => {
-      if (Number.isInteger(a[0].region_num)) {
+      if (a[0] && Number.isInteger(a[0].region_num)) {
         return a[0].region_num - b[0].region_num
       }
     })
