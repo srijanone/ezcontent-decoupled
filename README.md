@@ -19,7 +19,7 @@ Be one step ahead with AI and ML-based auto-tagging, content generation, and per
 
 ## Prerequisite
 
-If you are running the EzContent drupal application and the nextjs starter kit on your local system, please make sure you create a Virtual Host for your drupal application and pass it in the .env file updating the API_HOST.
+If you are running the <a target="_blank" href="https://www.drupal.org/project/ezcontent">EzContent Drupal distribution</a> and the <a target="_blank" href="https://github.com/srijanone/ezcontent-decoupled">NextJS starter kit</a> on your local system, make sure you create a Virtual Host for your Drupal application and add the host URL as environment variable in NextJS side (as API_HOST).
 
 ## Getting Started/Setup
 
