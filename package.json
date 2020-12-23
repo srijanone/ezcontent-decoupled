@@ -13,7 +13,7 @@
     "express": "^4.17.1",
     "ezcontent_jsonapi": "^2.0.8",
     "hex-to-rgba": "^2.0.1",
-    "isomorphic-unfetch": "^3.0.0",
+    "isomorphic-unfetch": "^3.1.0",
     "next": "9.5.5",
     "npm": "^6.14.8",
     "react": "16.14.0",
