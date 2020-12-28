@@ -14,7 +14,7 @@ function MyApp({ fetchPage, headerFooter, error }) {
   return error === false ? (
     <>
       <Header data={headerFooter} />
-      <Component data={fetchPage} baseUrl={process.env.API_HOST} />
+      <Component data={fetchPage} baseUrl={process.env.API_HOST} instagram_token_val={process.env.INSTAGRAM_TOKEN}/>
       <Footer data={headerFooter}/>
     </>
   ) : (

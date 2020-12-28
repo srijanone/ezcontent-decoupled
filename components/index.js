@@ -94,6 +94,7 @@ export default props => {
 
   let content = get(props,'data.content');
   let baseUrl = get(props,'baseUrl');
+  let instagram_token = get(props,'instagram_token_val');
   let pageTitle = get(props,'data.node_basic_data.title');
   const showPageTitle = get(props, "data.node_basic_data.path.alias")!=="/home";
   let subhead = (!landingPageCheck) ? get(props,'data.node_basic_data.field_subhead') : null;
@@ -149,7 +150,7 @@ export default props => {
           textData = handleImageInProcessedText(textData, baseUrl);         
           return <Text key={`text_block_${keyVal}`} text={textData} medium="1" data={comp} landingPageCheck={landingPageCheck}/>;
         case "social_media":
-          return <SocialMedia key={`social_media_${keyVal}`} type={comp.media.type} attributes={comp.media.attributes} data={comp} landingPageCheck={landingPageCheck}/>;
+          return <SocialMedia key={`social_media_${keyVal}`} type={comp.media.type} attributes={comp.media.attributes} data={comp} landingPageCheck={landingPageCheck} instagram_token_value={instagram_token}/>;
         case "assets":
           return <Paragraph key={`assets_${keyVal}`} data={comp} baseUrl={baseUrl} landingPageCheck={landingPageCheck}/>;
         case "gallery":

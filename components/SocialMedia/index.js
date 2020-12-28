@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import BlockTitle from "../BlockTitle";
 import InstagramEmbed from 'react-instagram-embed';
+import get from "lodash/get";
 // import "./Socialmedia.css";
 
-const SocialMediaComp = ({type, attributes, data, landingPageCheck}) => {
+const SocialMediaComp = ({type, attributes, data, landingPageCheck, instagram_token_value}) => {
   
   useEffect(() => {
     if (type !== "media--tweet") return;
@@ -11,7 +12,7 @@ const SocialMediaComp = ({type, attributes, data, landingPageCheck}) => {
     script.src = "https://platform.twitter.com/widgets.js";
     document.getElementsByClassName("twitter-tweet")[0].appendChild(script);
   }, []);
-  const { embed_code: url } = attributes;
+  let url = (type === "media--tweet") ? get(attributes, "embed_code") : get(attributes, "field_media_oembed_instagram")
   if (!url) return null;
   if (type === "media--tweet") {
     return (
@@ -35,6 +36,7 @@ const SocialMediaComp = ({type, attributes, data, landingPageCheck}) => {
       <div className="pb-3 mt-3 mb-3">
         <InstagramEmbed
           url={url.split("?")[0]}
+          clientAccessToken={instagram_token_value}
           maxWidth={320}
           hideCaption={false}
           containerTagName='div'
