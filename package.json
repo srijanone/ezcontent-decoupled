@@ -6,7 +6,9 @@
     "dev_server": "node server.js",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -20,6 +22,8 @@
     "react-dom": "16.14.0",
     "react-helmet": "^6.1.0",
     "react-instagram-embed": "^2.0.0",
-    "react-slick": "^0.27.13"
-  }
+    "react-slick": "^0.27.13",
+    "@snyk/protect": "latest"
+  },
+  "snyk": true
 }
