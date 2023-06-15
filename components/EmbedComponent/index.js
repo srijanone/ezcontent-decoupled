@@ -9,7 +9,7 @@ export default props => {
     field_script: script
   } = props;
   const blockCheck = get(props, 'blockcomponent__val');
-  const finalScript = get(script, 'value');
+  let finalScript = get(script, 'value');
   const extractscript = /<script>.*?<\/script>/gi.exec(finalScript);
   if (extractscript) {
     finalScript = finalScript.replace(extractscript[0], "");
