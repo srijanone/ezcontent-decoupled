@@ -38,29 +38,29 @@ class HeroBanner extends React.Component {
   }
   heroComponent = (heroAsset) => {
     return (
-     <>
+      <>
         {/* <div className="hero_banner_wrapper paragraph--type--card paragraph--view-mode--hero-media position-relative w-100" style={{ backgroundImage: `url(${heroAsset.image})`, backgroundRepeat: `no-repeat` }}> */}
         <div className="hero_banner_wrapper paragraph--type--card paragraph--view-mode--hero-media position-relative w-100">
-        <img src={heroAsset.image} />
-        <div className={this.layoutToggle(heroAsset.textPosition)} style={{ backgroundColor: heroAsset.bgColor }}>
-          <div className="hero_banner_title field--name-field-title mr-0 text-black pt-0 pb-0 pr-2 pl-2 w-100">{heroAsset.title}</div>
-          <div className="hero_banner_short_title pt-1 pl-2 pb-0" text_color={heroAsset.text_color}>{heroAsset.field_short_title}</div>
-          <div className="hero_banner_subhead field--name-field-subhead pt-1 pl-2 pb-0" text_color={heroAsset.text_color}>{heroAsset.field_subhead}</div>
-          <div className="hero_banner_text_desc mt-1 mb-1 mr-0 pl-2 text-black">
-            {heroAsset.description}
+          <img src={heroAsset.image} />
+          <div className={this.layoutToggle(heroAsset.textPosition)} style={{ backgroundColor: heroAsset.bgColor }}>
+            <div className="hero_banner_title field--name-field-title mr-0 text-black pt-0 pb-0 pr-2 pl-2 w-100">{heroAsset.title}</div>
+            <div className="hero_banner_short_title pt-1 pl-2 pb-0" text_color={heroAsset.text_color}>{heroAsset.field_short_title}</div>
+            <div className="hero_banner_subhead field--name-field-subhead pt-1 pl-2 pb-0" text_color={heroAsset.text_color}>{heroAsset.field_subhead}</div>
+            <div className="hero_banner_text_desc mt-1 mb-1 mr-0 pl-2 text-black">
+              {heroAsset.description}
 
-          </div>
-          <div className="hero_banner_btn_wrapper float-right">
-            {heroAsset.url.map(
-              (item, index) => {
-                return this.mapButtons(item, 0, index)
+            </div>
+            <div className="hero_banner_btn_wrapper float-right">
+              {heroAsset.url.map(
+                (item, index) => {
+                  return this.mapButtons(item, 0, index)
+                }
+              )
               }
-            )
-            }
+            </div>
           </div>
         </div>
-      </div>
-     </>
+      </>
     )
   }
 
@@ -68,15 +68,31 @@ class HeroBanner extends React.Component {
 
   render() {
     const {
-      items,
+      items, componentAttributes
     } = this.props.data;
-    
     const baseUrl = this.props.baseUrl;
-    
+
+    let dynamicAttributes = componentAttributes?.block_content_attributes?.data.split("\n").reduce(function(obj, str, index) {
+      let strParts = str.split("|");
+      if (strParts[0] && strParts[1]) {
+        obj[strParts[0]] = strParts[1].replace("\r", '');
+        return obj;
+      }
+    }, {});
+
+      //Dynamic style attributes
+      let dynamicStyle = componentAttributes?.block_content_attributes?.style.split(" ").reduce(function(obj, str, index) {
+        let strParts = str.split(":");
+        if (strParts[0] && strParts[1]) {
+          obj[strParts[0]] = strParts[1].replace(";", '');;
+          return obj;
+      }
+      }, {});
+
     const heroAssetArr = items.map((heroData, index) => ({
       id: get(items[index], 'id') || index,
       // image: get(heroData,'file') ? `${baseUrl}${get(heroData, 'file.uri.url')}` : null,
-      image: get(heroData,'derivatives.hero_media.url') ? `${baseUrl}${get(heroData, 'derivatives.hero_media.url')}` : null,
+      image: get(heroData, 'derivatives.hero_media.url') ? `${baseUrl}${get(heroData, 'derivatives.hero_media.url')}` : null,
       title: get(heroData, 'card.field_title') || '',
       description: cleanDescription(get(heroData, 'card.field_summary.processed')) || '',
       field_subhead: get(heroData, 'card.field_subhead') || '',
@@ -129,12 +145,14 @@ class HeroBanner extends React.Component {
     }
     return (
       <>
-      <BlockTitle blockTitle={this.props.data} landingPageCheck={this.props.landingPageCheck}/>
-      <div className="mt-4 pb-2 block--type-hero-media-block">
-        {heroAssetArr[0] && (
-          this.heroComponent(heroAssetArr[0])
-        )}
-      </div>
+        <BlockTitle blockTitle={this.props.data} landingPageCheck={this.props.landingPageCheck} />
+        <div className={`mt-4 pb-2 block--type-hero-media-block ${componentAttributes?.block_content_attributes?.class ? componentAttributes?.block_content_attributes.class : ""}`}
+          id={componentAttributes?.block_content_attributes?.id ? componentAttributes?.block_content_attributes.id : null}
+         {...dynamicAttributes}  style={{...dynamicStyle}}>
+          {heroAssetArr[0] && (
+            this.heroComponent(heroAssetArr[0])
+          )}
+        </div>
       </>
     );
   }

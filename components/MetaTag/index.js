@@ -12,7 +12,7 @@ export default ({ meta }) => {
   outerSchemaMeta["@context"] = "https://schema.org";
   
   if(meta){
-    let metaData = get(meta,"metatag_normalized").filter(({ tag }) => tag === "meta");
+    let metaData = get(meta,"metatag_normalized")?.filter(({ tag }) => tag === "meta");
     if (metaData){
       metaHolder = metaData.map((mTag,i)=>{
         if(get(mTag,"attributes.name")){
