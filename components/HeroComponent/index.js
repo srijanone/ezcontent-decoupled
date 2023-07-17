@@ -68,48 +68,38 @@ class HeroBanner extends React.Component {
 
   render() {
     const {
-      items, componentAttributes
+      items,
     } = this.props.data;
+
     const baseUrl = this.props.baseUrl;
 
-    let dynamicAttributes = componentAttributes?.block_content_attributes?.data.split("\n").reduce(function(obj, str, index) {
-      let strParts = str.split("|");
-      if (strParts[0] && strParts[1]) {
-        obj[strParts[0]] = strParts[1].replace("\r", '');
-        return obj;
+    const heroAssetArr = items.map((heroData, index) => {
+      let imageUrlPath = get(heroData, 'derivatives.hero_media.url') ? `${baseUrl}${get(heroData, 'derivatives.hero_media.url')}` : null
+      if (process.env.IS_TGR == "true") {
+        imageUrlPath = get(heroData, 'derivatives.hero_media.url') ? `${get(heroData, 'derivatives.hero_media.url')}` : null
       }
-    }, {});
-
-      //Dynamic style attributes
-      let dynamicStyle = componentAttributes?.block_content_attributes?.style.split(" ").reduce(function(obj, str, index) {
-        let strParts = str.split(":");
-        if (strParts[0] && strParts[1]) {
-          obj[strParts[0]] = strParts[1].replace(";", '');;
-          return obj;
-      }
-      }, {});
-
-    const heroAssetArr = items.map((heroData, index) => ({
-      id: get(items[index], 'id') || index,
-      // image: get(heroData,'file') ? `${baseUrl}${get(heroData, 'file.uri.url')}` : null,
-      image: get(heroData, 'derivatives.hero_media.url') ? `${baseUrl}${get(heroData, 'derivatives.hero_media.url')}` : null,
-      title: get(heroData, 'card.field_title') || '',
-      description: cleanDescription(get(heroData, 'card.field_summary.processed')) || '',
-      field_subhead: get(heroData, 'card.field_subhead') || '',
-      bgColor: hexToRgba(
-        get(heroData, "card.field_text_background_color.color"),
-        get(heroData, "card.field_text_background_color.opacity")
-      ),
-      textPosition: get(heroData, "card.field_text_position"),
-      field_short_title: get(heroData, 'card.field_short_title') || '',
-      url: [
-        {
-          link: get(heroData, 'card.field_link.url') || '',
-          title: get(heroData, 'card.field_link.title') || '',
-          video_url: 0,
-        },
-      ],
-    }));
+      return ({
+        id: get(items[index], 'id') || index,
+        // image: get(heroData,'file') ? `${baseUrl}${get(heroData, 'file.uri.url')}` : null,
+        image: imageUrlPath,
+        title: get(heroData, 'card.field_title') || '',
+        description: cleanDescription(get(heroData, 'card.field_summary.processed')) || '',
+        field_subhead: get(heroData, 'card.field_subhead') || '',
+        bgColor: hexToRgba(
+          get(heroData, "card.field_text_background_color.color"),
+          get(heroData, "card.field_text_background_color.opacity")
+        ),
+        textPosition: get(heroData, "card.field_text_position"),
+        field_short_title: get(heroData, 'card.field_short_title') || '',
+        url: [
+          {
+            link: get(heroData, 'card.field_link.url') || '',
+            title: get(heroData, 'card.field_link.title') || '',
+            video_url: 0,
+          },
+        ],
+      })
+    });
     const settings = {
       infinite: true,
       speed: 500,
@@ -146,9 +136,7 @@ class HeroBanner extends React.Component {
     return (
       <>
         <BlockTitle blockTitle={this.props.data} landingPageCheck={this.props.landingPageCheck} />
-        <div className={`mt-4 pb-2 block--type-hero-media-block ${componentAttributes?.block_content_attributes?.class ? componentAttributes?.block_content_attributes.class : ""}`}
-          id={componentAttributes?.block_content_attributes?.id ? componentAttributes?.block_content_attributes.id : null}
-         {...dynamicAttributes}  style={{...dynamicStyle}}>
+        <div className="mt-4 pb-2 block--type-hero-media-block">
           {heroAssetArr[0] && (
             this.heroComponent(heroAssetArr[0])
           )}

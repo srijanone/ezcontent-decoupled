@@ -11,7 +11,7 @@ import { getOauth, getMenus, resolveUrl, PageContent } from 'ezcontent_jsonapi';
 function MyApp({ fetchPage, headerFooter, error }) {
   return error === false ? (
     <>
-      <Header  data={headerFooter} />
+      <Header data={headerFooter} />
       <Component
         data={fetchPage}
         baseUrl={process.env.API_HOST}
@@ -62,15 +62,27 @@ async function postRequest(url, payload) {
     },
     includedFields: [
       {
-        // type: 'article',
-        // jsonQuery: 'include=field_author.field_thumbnail.field_media_image,field_tags,field_thumbnail.thumbnail&fields[media--image]=name,metatag,thumbnail&fields[file--file]=uri,filename&fields[node--author]=body,title,status,path,field_thumbnail&fields[taxonomy_term--tags]=name,path'
-        //Changed For TGR
-        type: 'article_decoupled',
-        jsonQuery:
-          'include=field_author.field_thumbnail.field_media_image&fields[media--image]=name,metatag,thumbnail&fields[file--file]=uri,filename&fields[node--author]=body,title,status,path,field_thumbnail&fields[taxonomy_term--tags]=name,path',
-      },
-    ],
-  };
+        type: 'landing_page',
+        jsonQuery: 'include=uid'
+      }
+    ]
+
+  }
+
+  if (process.env.IS_TGR == 'true') {
+    userParams.includedFields.push(
+      {
+        type: 'article',
+        jsonQuery: 'include=field_author.field_hero_media,field_author.field_hero_media.field_media_image,field_hero_media&fields%5Bmedia--image%5D=name,metatag,thumbnail,field_description&fields%5Bfile--file%5D=uri,filename&fields%5Bnode--author%5D=body,title,status,path,field_thumbnail,field_hero_media&fields%5Btaxonomy_term--tags%5D=name,path'} )
+  }
+  else {
+    userParams.includedFields.push(
+      {
+        type: 'article',
+        jsonQuery: 'include=field_author.field_thumbnail.field_media_image,field_tags,field_thumbnail.thumbnail&fields[media--image]=name,metatag,thumbnail&fields[file--file]=uri,filename&fields[node--author]=body,title,status,path,field_thumbnail&fields[taxonomy_term--tags]=name,path'
+      }
+    )
+  }
 
   let output = {};
   let pathResolve = null;
@@ -91,7 +103,7 @@ async function postRequest(url, payload) {
     });
   // get menu
   if (pathResolve) {
-    let menus =  getMenus(userParams, 'jsonapi', oauthToken);
+    let menus = getMenus(userParams, 'jsonapi', oauthToken);
     await menus
       .then((menusjson) => {
         output['menus'] = menusjson;

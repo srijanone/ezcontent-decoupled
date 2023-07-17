@@ -8,12 +8,15 @@ export default props => {
   }
   let data = [];
   data = props.data?.items?.map(x => {
+    console.log("check x" , x)
     const article = {
       title: x.article.title,
       path: x?.article?.path?.alias,
       summary: handleImageInProcessedText(x.article.field_summary, props.baseUrl),
-      image: x?.file?.url
-      //  (get(x, "file.url")) ? props.baseUrl + (get(x, "file.url").replace("/sites/default/files/","/sites/default/files/styles/card_list/public/")) : null
+      image:    x?.file?.uri.url || ""
+      //(get(x, "file.url")) ? (get(x, "file.url").replace("/sites/default/files/","/sites/default/files/styles/card_list/public/")) : null
+   
+     
     };
     return article;
   });
