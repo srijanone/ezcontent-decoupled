@@ -8,16 +8,15 @@ export default props => {
   }
   let data = [];
   data = props.data?.items?.map(x => {
-    console.log("check x" , x)
     const article = {
       title: x.article.title,
       path: x?.article?.path?.alias,
       summary: handleImageInProcessedText(x.article.field_summary, props.baseUrl),
-      image:    x?.file?.uri.url || ""
-      //(get(x, "file.url")) ? (get(x, "file.url").replace("/sites/default/files/","/sites/default/files/styles/card_list/public/")) : null
-   
-     
-    };
+      image: (get(x, "file.uri.url")) ? props.baseUrl + (get(x, "file.uri.url").replace("/sites/default/files/","/sites/default/files/styles/card_list/public/")) : null
+         };
+    if(process.env.IS_TGR == 'true') {
+      article.image =  x?.file?.uri.url || null;
+    }
     return article;
   });
   return (
