@@ -18,6 +18,10 @@ export default class CardListGenerator extends React.Component {
         <>
           {
             cardListContent.map((item,i) =>     {
+              let imageUrlPath = get(item,"derivatives.card_list.url") ? this.props.baseUrl+get(item,"derivatives.card_list.url") : null;
+              if(process.env.IS_TGR == "true"){
+                imageUrlPath = get(item,"derivatives.card_list.url") ? get(item,"derivatives.card_list.url") : null
+              }
               return  (
                 <CardList
                   key = {`carlist_item_${i}`}
@@ -28,7 +32,7 @@ export default class CardListGenerator extends React.Component {
                   Subhead = { get(item,"card.field_subhead") ? get(item,"card.field_subhead") : null}
                   Title = { get(item,"card.field_title") ? get(item,"card.field_title") : null}
                   // ImageUrl = {get(item,"file.uri.url") ? this.props.baseUrl + get(item,"file.uri.url") : null}
-                  ImageUrl = {get(item,"derivatives.card_list.url") ? this.props.baseUrl + get(item,"derivatives.card_list.url") : null}
+                  ImageUrl = {imageUrlPath}
                   layout = {get(item,"layout.drupal_internal__id") ? get(item,"layout.drupal_internal__id") : "none"}
                   viewMode = {viewMode}
                   fieldName = {get(cardListData, "parent_field_name")}
