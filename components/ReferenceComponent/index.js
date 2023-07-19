@@ -15,7 +15,7 @@ export default props => {
       image: (get(x, "file.uri.url")) ? props.baseUrl + (get(x, "file.uri.url").replace("/sites/default/files/","/sites/default/files/styles/card_list/public/")) : null
          };
     if(process.env.IS_TGR == 'true') {
-      article.image =  x?.file?.uri.url || null;
+      article.image =  x?.file?.uri?.url || null;
     }
     return article;
   });

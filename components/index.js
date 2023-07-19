@@ -125,25 +125,23 @@ export default props => {
     <>
       <div className={hide}>
         <div className="field__label">Author</div>
-        <h2 className="node__title">
-          {/* { AuthorTitle  ? <a href={AuthorTitleUrl}>{AuthorTitle}</a> : '' } */}
-          {AuthorTitle ? AuthorTitle : ''}
-        </h2>
         <div className="row">
           <div className="col-md-4">
             {AuthorIcon ? <img src={AuthorIcon} /> : ''}
           </div>
-          {
-            summary ?
-              <div
-                dangerouslySetInnerHTML={{ __html: summary }}
-                className="mt-2 col-md-8"
-              /> :
-              ''
-          }
-          {createdDate && (
-            <p>{new Date(createdDate).toUTCString()}</p>
+          <h2 className="node__title">
+            {/* { AuthorTitle  ? <a href={AuthorTitleUrl}>{AuthorTitle}</a> : '' } */}
+            {AuthorTitle ? AuthorTitle : ''}
+          </h2>
+          {summary ? (
+            <div
+              dangerouslySetInnerHTML={{ __html: summary }}
+              className="mt-2 col-md-8"
+            />
+          ) : (
+            ''
           )}
+          {createdDate && <p>{new Date(createdDate).toUTCString()}</p>}
           <br />
           {updatedDate && (
             <p>(Updated:{new Date(updatedDate).toUTCString()})</p>
@@ -151,13 +149,13 @@ export default props => {
         </div>
       </div>
     </>
-  )
+  );
 
   function sortByWeight(arr) {
     const sortArr = arr;
     sortArr.sort((a, b) => {
-      if (a[0] && Number.isInteger(a[0].region_num)) {
-        return a[0].region_num - b[0].region_num
+      if (a[0] && Number.isInteger(a[0]?.region_num)) {
+        return a[0]?.region_num - b[0]?.region_num
       }
     })
     return sortArr;
@@ -263,48 +261,68 @@ export default props => {
       }
     </>
   )
+  
   let newComponent;
   if (postSection && authorData) {
     newComponent = (
       <>
-        <div>
-          <div>
+        <div className="article_wrapper">
+          <div className="article_image">
             <img src={postUrl} alt={postName} />
             <p>{postDetail}</p>
           </div>
-          <div>
-            {Author}
-          </div>
-
+          <div className="article_author">{Author}</div>
         </div>
       </>
-    )
+    );
   }
   return (
     <Fragment>
-      <MetaTag meta={get(props, "data.node_basic_data")} />
-      <div id="main-wrapper" className={landingPageCheck ? "ezcontent-main-wrapper landing-page-holder" : "ezcontent-main-wrapper"}>
-        <div className={landingPageCheck ? "mt-4 mb-4" : "container mt-4 mb-4"}>
-
+      <MetaTag meta={get(props, 'data.node_basic_data')} />
+      <div
+        id="main-wrapper"
+        className={
+          landingPageCheck
+            ? 'ezcontent-main-wrapper landing-page-holder'
+            : 'ezcontent-main-wrapper'
+        }
+      >
+        <div className={landingPageCheck ? 'mt-4 mb-4' : 'container mt-4 mb-4'}>
           {postSection && authorData ? (
             <>
-              {breadcrumbData ? <BreadCrumb landingPageCheck={landingPageCheck} data={breadcrumbData} /> : null}
-              {landingPageCheck && !showPageTitle ? null : <h1 className="pb-3">{pageTitle}</h1>}
-              {subhead && (<div dangerouslySetInnerHTML={{ __html: subhead }} className="mb-2"></div>)}
+              {breadcrumbData ? (
+                <BreadCrumb
+                  landingPageCheck={landingPageCheck}
+                  data={breadcrumbData}
+                />
+              ) : null}
+              {landingPageCheck && !showPageTitle ? null : (
+                <h1 className="pb-3 article_heading">{pageTitle}</h1>
+              )}
+              {subhead && (
+                <div
+                  dangerouslySetInnerHTML={{ __html: subhead }}
+                  className="mb-2"
+                ></div>
+              )}
               {newComponent !== undefined && newComponent}
               {block}
             </>
-          ) :
-            (
-              <>
-                {breadcrumbData ? <BreadCrumb landingPageCheck={landingPageCheck} data={breadcrumbData} /> : null}
-                {/* {landingPageCheck && !showPageTitle ? null : <h1 className="pb-3">{ pageTitle }</h1> } */}
-                {/* { shortTitle ? <div className="mb-2">{shortTitle}</div> : null }*/}
-                {/* {subhead && (<div   dangerouslySetInnerHTML={{ __html: subhead }} className="mb-2"></div>) } */}
-                {block}
-                {Author}
-              </>
-            )}
+          ) : (
+            <>
+              {breadcrumbData ? (
+                <BreadCrumb
+                  landingPageCheck={landingPageCheck}
+                  data={breadcrumbData}
+                />
+              ) : null}
+              {/* {landingPageCheck && !showPageTitle ? null : <h1 className="pb-3">{ pageTitle }</h1> } */}
+              {/* { shortTitle ? <div className="mb-2">{shortTitle}</div> : null }*/}
+              {/* {subhead && (<div   dangerouslySetInnerHTML={{ __html: subhead }} className="mb-2"></div>) } */}
+              {block}
+              {Author}
+            </>
+          )}
         </div>
       </div>
     </Fragment>
